@@ -16,8 +16,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'WolfgangMehner/c.vim'
 Plugin 'Shougo/neocomplete.vim'
 
