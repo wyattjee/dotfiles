@@ -43,6 +43,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -55,6 +56,8 @@ Plug 'shougo/neoinclude.vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
 Plug 'ryanoasis/vim-devicons'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/gtk-vim-syntax'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -95,5 +98,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
-map <C-t> :TagbarToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
+" keymap
+nmap <F10> :TagbarToggle<CR>
+nmap <F9> :NERDTreeToggle<CR>
