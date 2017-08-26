@@ -48,7 +48,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
-Plug 'wolfgangmehner/c.vim'
+"Plug 'wolfgangmehner/c.vim'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'ponko2/deoplete-fish'
@@ -58,6 +58,7 @@ Plug 'zchee/deoplete-clang'
 Plug 'ryanoasis/vim-devicons'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/gtk-vim-syntax'
+Plug 'antoyo/vim-licenses'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -99,5 +100,9 @@ let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " keymap
-nmap <F10> :TagbarToggle<CR>
-nmap <F9> :NERDTreeToggle<CR>
+map <F10> :TagbarToggle<CR>
+map <F8> :NERDTreeToggle<CR>
+
+" licennses
+let g:licenses_authors_name = 'Wyatt Jee <bluesorrow221@gmail.com>'
+let g:licenses_copyright_holders_name = 'Wyatt Jee <bluesorrow221@gmail.com>'
