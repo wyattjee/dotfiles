@@ -53,9 +53,10 @@ Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'ponko2/deoplete-fish'
 Plug 'shougo/neoinclude.vim'
+Plug 'shougo/denite.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/gtk-vim-syntax'
 Plug 'antoyo/vim-licenses'
@@ -73,8 +74,9 @@ let g:deoplete#enable_at_startup = 1
 
 " vim-airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'papercolor'
+"let g:airline_theme = 'papercolor'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 "let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#symbol = '!'

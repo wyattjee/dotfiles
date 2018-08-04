@@ -1,6 +1,10 @@
-#set PATH (ruby -e 'print Gem.user_dir')/bin $PATH
-#set PATH ~/.config/composer/vendor/bin $PATH
+#################################
+#                               #
+#   fish shell configure file   #
+#                               #
+#################################
 
+# oh-my-fish theme
 set -g theme_display_git yes
 set -g theme_display_git_untracked no
 set -g theme_display_git_ahead_verbose yes
