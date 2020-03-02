@@ -1,6 +1,29 @@
 """"""""""""""""""""""""""""""
 " Configure
 """"""""""""""""""""""""""""""
+
+set noshowmode
+set laststatus=2
+
+" set default encoding to UTF-8
+set encoding=utf-8
+
+" show next 3 lines while scrolling.
+if !&scrolloff
+    set scrolloff=3
+endif
+
+" show next 5 columns while side-scrolling
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
+
+" use 'magic' patterns (extended regular expression)
+set magic
+
+" automatically reread changed files without asking me anything
+set autoread
+
 " Use spaces instead of tabs
 set expandtab
 
@@ -44,8 +67,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/vim-gitbranch'
 Plug 'majutsushi/tagbar'
 Plug 'kien/ctrlp.vim'
 Plug 'antoyo/vim-licenses'
@@ -56,14 +79,9 @@ Plug 'junegunn/goyo.vim'
 " On-demand loading
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Initialize plugin system
 call plug#end()
-
-
-" Use deoplete.
-"let g:deoplete#enable_at_startup = 1
 
 " keymap
 map <F10> :TagbarToggle<CR>
@@ -206,30 +224,19 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" vim-airline
-let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'papercolor'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-"let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#whitespace#symbol = '!'
-let g:airline#extensions#tabline#buffer_idx_mode = 1
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
 
-" enable/disable coc integration
-let g:airline#extensions#coc#enabled = 1
-
-" change error symbol:
-"let airline#extensions#coc#error_symbol = 'E:'
-
-" change warning symbol:
-"let airline#extensions#coc#warning_symbol = 'W:'
-
-" change error format:
-"let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-
-" change warning format:
-"let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'cocstatus', 'currentfunction' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \ },
+      \ }
