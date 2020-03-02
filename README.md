@@ -1,9 +1,9 @@
 # dotfiles
 
-This is a repository including my dotfiles on my archlinux.
+This is a repository including my dotfiles on my macbook pro.
 
 ---
 
 Wyatt Jee
 
-2016.9.30, Zhejiang
+2020.3.2, Zhejiang
