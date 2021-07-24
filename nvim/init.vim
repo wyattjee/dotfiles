@@ -1,7 +1,12 @@
 """"""""""""""""""""""""""""""
 " Configure
 """"""""""""""""""""""""""""""
+set t_Co=16
 
+if has("gui_vimr")
+  " Here goes some VimR specific settings like
+  "color xyz
+endif
 set noshowmode
 set laststatus=2
 
@@ -43,7 +48,7 @@ set textwidth=80
 "set colorcolumn=+1
 
 " Number
-"set number
+set number
 "set numberwidth=4
 
 " Search
@@ -53,9 +58,6 @@ set hlsearch
 " backspace
 set backspace=indent,eol,start
 
-" color
-highlight Pmenu     ctermfg=0   ctermbg=225     guibg=LightMagenta
-highlight PmenuSel  ctermfg=0   ctermbg=7       guibg=Grey
 
 """"""""""""""""""""""""""""""
 " Plugin Settings
@@ -67,14 +69,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 "Plug 'itchyny/vim-gitbranch'
 Plug 'majutsushi/tagbar'
-Plug 'kien/ctrlp.vim'
 Plug 'antoyo/vim-licenses'
 Plug 'hotoo/pangu.vim'
 Plug 'junegunn/goyo.vim'
-
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'junegunn/vim-easy-align'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 
 " On-demand loading
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -90,6 +95,7 @@ map <F8> :NERDTreeToggle<CR>
 " licennses
 let g:licenses_authors_name = 'Wyatt Jee <bluesorrow221@gmail.com>'
 let g:licenses_copyright_holders_name = 'Wyatt Jee <bluesorrow221@gmail.com>'
+
 
 """"""""""""""""
 "  coc config
@@ -111,8 +117,14 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
-"set signcolumn=yes
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -229,7 +241,7 @@ function! CocCurrentFunction()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified', 'cocstatus', 'currentfunction' ] ],
@@ -240,3 +252,29 @@ let g:lightline = {
       \   'currentfunction': 'CocCurrentFunction',
       \ },
       \ }
+
+"""""""""""""""""
+"  colorscheme 
+"""""""""""""""""
+set background=light
+"colorscheme solarized8
+
+
+""""""""""""""""""""
+"  vim align config
+"""""""""""""""""""
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+""""""""""""""""""""
+"  NERDTree config
+""""""""""""""""""""
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
